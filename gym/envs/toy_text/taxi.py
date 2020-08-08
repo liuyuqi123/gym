@@ -1,6 +1,6 @@
 import sys
 from contextlib import closing
-from six import StringIO
+from io import StringIO
 from gym import utils
 from gym.envs.toy_text import discrete
 import numpy as np
@@ -51,7 +51,9 @@ class TaxiEnv(discrete.DiscreteEnv):
     - 5: dropoff passenger
     
     Rewards: 
-    There is a reward of -1 for each action and an additional reward of +20 for delivering the passenger. There is a reward of -10 for executing actions "pickup" and "dropoff" illegally.
+    There is a default per-step reward of -1,
+    except for delivering the passenger, which is +20,
+    or executing "pickup" and "drop-off" actions illegally, which is -10.
     
 
     Rendering:
